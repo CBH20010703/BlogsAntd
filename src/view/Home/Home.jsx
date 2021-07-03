@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./Home.css"
-import { Button } from 'antd';
 import Texty from 'rc-texty';
 import TweenOne from 'rc-tween-one'
 export default class Home extends Component {

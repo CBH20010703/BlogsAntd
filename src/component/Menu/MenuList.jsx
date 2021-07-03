@@ -13,10 +13,11 @@ export default class MenuList extends Component {
     this.state = {
       menus: [],
     }
-    this.InitMenu();
 
   }
-
+  componentDidMount() {
+    this.InitMenu();
+  }
   //
   InitMenu = async () => {
     let that = this;
@@ -26,8 +27,9 @@ export default class MenuList extends Component {
       that.setState({
         menus: menus
       })
-    }).catch((er) => {
 
+    }).catch((error) => {
+      console.log("1111")
     })
 
   }
@@ -35,12 +37,21 @@ export default class MenuList extends Component {
 
   // })
   render() {
-    const listItems = this.state.menus.map((item, index) => {
-      return <Menu.Item key={index} icon={<CodeSandboxOutlined />}>
-        <Link to="/Index">{item.menu_title}
+    let listItems = null;
+    if (JSON.stringify(this.state.menus) === "[]") {
+      listItems = <Menu.Item key="2" icon={<CodeSandboxOutlined />}>
+        <Link to="/NavCode"> navcode{this.state.menus.length}
         </Link>
       </Menu.Item>
-    })
+    } else {
+      listItems = this.state.menus.map((item, index) => {
+        return <Menu.Item key={index} icon={<CodeSandboxOutlined />}>
+          <Link to="/Index">{item.menu_title}
+          </Link>
+        </Menu.Item>
+      })
+    }
+
 
     return (
       <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
@@ -49,8 +60,4 @@ export default class MenuList extends Component {
     )
   }
 }
-{/* <Menu.Item key="2" icon={<UserOutlined />}>
-  <Link to="/NavCode"> navcode{this.state.menus.length}
-  </Link>
 
-</Menu.Item> */}
