@@ -3,20 +3,20 @@ import { React, Component } from "react";
 import Headers from '../../component/Header/Headers';
 import MenuList from '../../component/Menu/MenuList';
 import Footers from '../../component/Footer/Footers';
-
 import { Skeleton, Layout } from 'antd';
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Home from "../Home/Home.jsx";
 import Navcode from "../NavCode/NavCode.jsx"
+import Aricle from "../Article/Aricle";
 import Error from "../404/Error";
 const { Content, Sider } = Layout;
 export default class Context extends Component {
   constructor(props) {
     super(props);
-    this.state = { collapsed: false, loading: true }
+    this.state = { collapsed: false, loading: true, ArrMenuData: [] }
     setTimeout(() => {
       this.setState({
-        loading: false
+        loading: false,
       })
     }, 3000)
   }
@@ -26,8 +26,18 @@ export default class Context extends Component {
       collapsed: data,
     });
   };
+  GetMenuData = (data) => {
+    this.setState({
+      ArrMenuData: data
+    })
+    console.log(this.state.ArrMenuData);
+  }
   render() {
-    let { loading } = this.state;
+    let { loading, ArrMenuData } = this.state;
+
+    let RouteList = ArrMenuData.map((item, index) => {
+      return <Route key={index} exact path={"/Article/" + item.artricle_id} component={Aricle} />
+    })
     return (
 
       <Layout>
@@ -39,15 +49,17 @@ export default class Context extends Component {
             left: 0,
           }}
         >
-          <MenuList />
+          <MenuList GetMenuData={this.GetMenuData} />
         </Sider>
         <Layout className="site-layout" style={{ paddingLeft: this.state.collapsed ? "60px" : "200px", transition: "0.1s ease" }}>
           <Headers toggle={this.toggle} parent={this.state.collapsed}></Headers>
-          <Content style={{ margin: '24px 16px 0', height: "auto", background: "#fff" }}>
+          <Content style={{ margin: '24px 20px 0', height: "auto", background: "#fff" }}>
             <Skeleton active loading={loading}>
               <Switch>
+
                 <Route exact path="/index" component={Home} />
                 <Route exact path="/NavCode" component={Navcode} />
+                {RouteList}
                 <Redirect exact path="/" to="/index"></Redirect>
                 <Route path="*" component={Error}></Route>
               </Switch>

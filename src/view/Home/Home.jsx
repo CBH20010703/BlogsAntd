@@ -63,7 +63,6 @@ export default class Home extends Component {
     };
     render() {
         return (
-
             <div>
                 <div className="combined-wrapper">
 
@@ -127,12 +126,22 @@ export default class Home extends Component {
                                 delay={2200}
                                 interval={30}
                             >
-                                欢迎来到我的个人博客
+                                博客基于React Antd UI 后端.NET CORE
                             </Texty>
-                            <Texty delay={2500}>{this.state.show && 'Ant Motion'}</Texty>
+                            <div className="combined-texttop">
+                                <Texty delay={3000}>{this.state.show && '欢迎来到我的个人博客'}</Texty>
+                            </div>
+                            <div>
+                                <Texty delay={3200}>{this.state.show && '作者信息'}</Texty>
+                                <Texty delay={3300}>{this.state.show && 'Name : C'}</Texty>
+                                <Texty delay={4400}>{this.state.show && '专  业:  后端开发 '}</Texty>
+                                <Texty delay={5500}>{this.state.show && 'Q   Q:  47790293'}</Texty>
+                                <Texty delay={6600}>{this.state.show && '写代码的感觉就像一场游戏 会让人愉快 也会让人生气 慢慢就上瘾了'}</Texty>
+                            </div>
                         </div>
                     )}
                 </div>
+
             </div>
 
         )
