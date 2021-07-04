@@ -1,0 +1,19 @@
+.UserAvatar{
+    text-align: center;
+    
+}
+.UserAvatar>.ant-avatar-lg{
+    width: 104px;
+    height:104px;
+    line-height:90px;
+    font-size:60px;
+}
+.UserName{
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .85);
+}
+.ant-tagbox{
+    padding: 10px 0;
+}

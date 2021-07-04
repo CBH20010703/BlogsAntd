@@ -11,11 +11,7 @@ export default class NavCode extends Component {
             loading: true,
             arrayMap: [1, 2, 3, 4, 5, 6, 7]
         }
-        setTimeout(() => {
-            this.setState({
-                loading: false
-            })
-        }, 1500)
+
     }
     handleClick = e => {
         console.log('click ', e);

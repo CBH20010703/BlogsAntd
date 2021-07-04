@@ -16,17 +16,15 @@ export default class MenuList extends Component {
       showKey: ["1-0"],
       articleArr: []
     }
-
-  }
-  componentDidMount() {
     this.InitMenu();
   }
+
   //
 
-  InitMenu = async () => {
+  InitMenu = () => {
     let that = this;
     let { menus, articleArr } = this.state;
-    await GetMenuList().then((res) => {
+    GetMenuList().then((res) => {
       menus = res;
 
       menus.forEach(item => {

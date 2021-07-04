@@ -10,9 +10,6 @@ export default class Aricle extends Component {
             markdown: "",
             loading: true
         }
-
-    }
-    componentDidMount() {
         GetArticle(this.props.location.state.artricle_id).then((res) => {
             this.setState({
                 markdown: res.article_codetext,
@@ -24,6 +21,7 @@ export default class Aricle extends Component {
     }
 
     render() {
+
         let { loading } = this.state;
         return (
             <div>
