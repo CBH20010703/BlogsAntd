@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom'
+
 import { GetMenuList } from "../../request/apiconfig"
 import "./MenuList.css"
 const { SubMenu } = Menu;
+
+
 
 export default class MenuList extends Component {
   constructor(props) {
@@ -19,6 +22,7 @@ export default class MenuList extends Component {
     this.InitMenu();
   }
   //
+
   InitMenu = async () => {
     let that = this;
     let { menus, articleArr } = this.state;
@@ -64,41 +68,32 @@ export default class MenuList extends Component {
     };
 
     let listItems = null;
-    if (JSON.stringify(this.state.menus) === "[]") {
+    listItems = this.state.menus.map((item, index) => {
+      return <SubMenu key={item.menu_Id + "-0"} icon={React.createElement("i", { className: item.menu_icon })} title={item.menu_title}>
+        {
+          item.menuChildrenList.map((childeritem, i) => {
+            if (JSON.stringify(childeritem.articleslList) === "[]") {
+              return <Menu.Item key={item.menu_Id + "-" + i + 1}><Link to="/DataEmpty">{childeritem.children_title}</Link> </Menu.Item>
+            } else {
+              return <SubMenu key={item.menu_Id + "-0," + item.menu_Id + "-" + (i + 1)} title={childeritem.children_title}>
+                {
+                  childeritem.articleslList.map((childeritemNode, nodeindex) => {
+                    var path = {
+                      pathname: "/Article/" + childeritemNode.artricle_id,
+                      state: childeritemNode,
+                    }
 
-      listItems = <Menu.Item key="2" >
+                    return <Menu.Item key={item.menu_Id + "-" + i + "-" + nodeindex}><Link to={path}>{childeritemNode.article_title}</Link></Menu.Item>
+                  })
+                }
+              </SubMenu>
+            }
 
-        <Link to="/NavCode"> navcode{this.state.menus.length}
-        </Link>
-      </Menu.Item>
-    } else {
+          })
+        }
+      </SubMenu>
+    })
 
-      listItems = this.state.menus.map((item, index) => {
-        return <SubMenu key={item.menu_Id + "-0"} icon={React.createElement("i", { className: item.menu_icon })} title={item.menu_title}>
-          {
-            item.menuChildrenList.map((childeritem, i) => {
-              if (JSON.stringify(childeritem.articleslList) === "[]") {
-                return <Menu.Item key={item.menu_Id + "-" + i + 1}>{childeritem.children_title}</Menu.Item>
-              } else {
-                return <SubMenu key={item.menu_Id + "-0," + item.menu_Id + "-" + (i + 1)} title={childeritem.children_title}>
-                  {
-                    childeritem.articleslList.map((childeritemNode, nodeindex) => {
-                      var path = {
-                        pathname: "/Article/" + childeritemNode.artricle_id,
-                        state: childeritemNode,
-                      }
-
-                      return <Menu.Item key={item.menu_Id + "-" + i + "-" + nodeindex}><Link to={path}>{childeritemNode.article_title}</Link></Menu.Item>
-                    })
-                  }
-                </SubMenu>
-              }
-
-            })
-          }
-        </SubMenu>
-      })
-    }
     // <Menu.Item key={index} icon={React.createElement("i", { className: item.menu_icon })}>
     //   <Link to="/Index">{item.menu_title}
     //   </Link>
@@ -106,6 +101,7 @@ export default class MenuList extends Component {
 
     return (
       <Menu theme="dark" mode="inline" openKeys={this.state.showKey} onOpenChange={onOpenChange} >
+        <Menu.Item key="0-0" ><Link to="/">首页</Link></Menu.Item>
         {listItems}
       </Menu>
     )

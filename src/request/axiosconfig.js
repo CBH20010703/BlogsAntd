@@ -4,7 +4,7 @@
  import axios from 'axios';
 import { message} from 'antd';
  if (process.env.NODE_ENV === 'development') {
-     //http://localhost:8081 http://www.cenbohao.com:8080
+     //http://localhost:8081 http://www.cenbohao.com:8080 http://www.cenbohao.com/
      axios.defaults.baseURL = 'http://localhost:5001';
  } else if (process.env.NODE_ENV === 'debug') {
      axios.defaults.baseURL = 'http://localhost:5001';
