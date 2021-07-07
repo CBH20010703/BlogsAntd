@@ -30,12 +30,31 @@ export default class Context extends Component {
     }, 1000)
 
   }
+  componentDidMount() {
+    if (!this.IsPC()) {
+      window.location.href = "/Phone"
+    }
+  }
   toggle = (data) => {
 
     this.setState({
       collapsed: data,
     });
   };
+  IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+      "SymbianOS", "Windows Phone",
+      "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = false;
+        break;
+      }
+    }
+    return flag;
+  }
   GetMenuData = (data) => {
     console.log(data);
     this.setState({
@@ -62,10 +81,7 @@ export default class Context extends Component {
         </Sider>
         <Layout className="site-layout" style={{ paddingLeft: this.state.collapsed ? "60px" : "200px", transition: "0.1s ease" }}>
           <Headers toggle={this.toggle} parent={this.state.collapsed}></Headers>
-
-          <Content style={{ margin: '24px 20px 0', height: "auto", background: "#fff" }}>
-
-
+          <Content style={{ margin: '24px 20px 0', height: "auto", padding: "20px" }}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/index" component={Home} />

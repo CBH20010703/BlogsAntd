@@ -28,13 +28,13 @@ export default class Headers extends Component {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                    <a rel="noopener noreferrer" href="/User">
                         个人中心
 
                     </a>
                 </Menu.Item>
                 <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                    <a rel="noopener noreferrer" >
                         退出登录
                     </a>
                 </Menu.Item>
