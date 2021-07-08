@@ -66,7 +66,7 @@ export default class MenuList extends Component {
     };
 
     let listItems = null;
-    listItems = this.state.menus.map((item, index) => {
+    listItems = this.state.menus.map((item) => {
       return <SubMenu key={item.menu_Id + "-0"} icon={React.createElement("i", { className: item.menu_icon })} title={item.menu_title}>
         {
           item.menuChildrenList.map((childeritem, i) => {

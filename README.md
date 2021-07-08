@@ -1,31 +1,29 @@
-
-
-# C React博客前台系统
+# C React 博客前台系统
 
 ### 项目目录介绍
 
-### 		项目基于 React Antd  UI Axios  遵循组件化开发规范
+### 项目基于 React Antd UI Axios 遵循组件化开发规范
 
-​			项目问题可以联系我 47790293
+​ 项目问题可以联系我 47790293
 
 项目运行 地址 http://www.cenbohao.com/
 
-​		
+​
 
-#### 		Src目录下介绍
+#### Src 目录下介绍
 
-| assets       |                  |         |
-| ------------ | ---------------- | ------- |
-| component    | 公共组件         | 负责人C |
-| request      | 封装请求 公共API | 负责人C |
-| router       | 外层路由         | 负责人C |
-| view         | 视图层           | 负责人C |
-| view/context | Main 页面        | 负责人C |
+| assets       |                   |          |
+| ------------ | ----------------- | -------- |
+| component    | 公共组件          | 负责人 C |
+| request      | 封装请求 公共 API | 负责人 C |
+| router       | 外层路由          | 负责人 C |
+| view         | 视图层            | 负责人 C |
+| view/context | Main 页面         | 负责人 C |
 
 ```json
 多级菜单Json 格式  menu->menuChildrenList->articleslList
 [
-  
+
   {
     "menu_Id": 2,
     "menu_title": "JavaScript",
@@ -103,3 +101,7 @@
   }
 ]
 ```
+
+#### 增加 个人介绍 已经代码高亮模式切换 目前还有点问题
+
+#### 2021-7-8 新增评论模块 修复样式 登录 个人信息正在跟进中
