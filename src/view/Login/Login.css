@@ -1,0 +1,16 @@
+.test{
+    width:40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    text-align: center;
+    line-height: 40px;
+    background: chocolate;
+}
+.test.active{
+    background: cornflowerblue;
+}
+.LoginBg{
+    background: #fdfdfd;
+    padding:10% 15%;
+    height: 100vh;
+}

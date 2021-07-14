@@ -1,0 +1,9 @@
+.ant-drawer-left .ant-drawer-content-wrapper,
+.ant-drawer-right .ant-drawer-content-wrapper {
+    height: calc(100vh - 40px);
+    margin: 20px;
+   
+}
+.ant-drawer-content{
+     border-radius: 20px !important;
+}

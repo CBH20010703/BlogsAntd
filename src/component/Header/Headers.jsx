@@ -7,6 +7,7 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
 } from '@ant-design/icons';
+import { GetUserInfo } from '../../request/apiconfig';
 
 
 const { Header } = Layout;
@@ -14,8 +15,20 @@ export default class Headers extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isShow: false
+            isShow: false,
+            user: {}
         }
+        // GetUserInfo().then(res => {
+        //     if (res.code == 200) {
+        //         this.setState({
+        //             user: res.data
+        //         })
+        //     } else {
+        //         this.setState({
+        //             isShow: true
+        //         })
+        //     }
+        // })
     }
     Tab = () => {
         let { isShow } = this.state;

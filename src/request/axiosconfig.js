@@ -24,7 +24,7 @@ import { message} from 'antd';
          // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token
          //Bearer Token认证  请求头中带上token 前 必须加 Beare+空格   
          //c88888888888888888888onsole.log(store.state.token);
-         const token = "";
+         const token = localStorage.getItem("token")
         
          // console.log(store.state.token);
          config.url = decodeURI(encodeURI(config.url).replace(/%E2%80%8B/g, ""))
